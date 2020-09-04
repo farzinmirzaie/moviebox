@@ -11,13 +11,13 @@ type Ratings = {
   Value: string;
 };
 
-export interface ISearch {
+export interface ISearchResponse {
   Response: string;
   Search: Item[];
   totalResults: string;
 }
 
-export interface IMovie {
+export interface IMovieResponse {
   Actors: string;
   Awards: string;
   BoxOffice: string;
@@ -43,4 +43,9 @@ export interface IMovie {
   imdbID: string;
   imdbRating: string;
   imdbVotes: string;
+}
+
+export interface IErrorResponse {
+  Response: string;
+  Error: string;
 }
