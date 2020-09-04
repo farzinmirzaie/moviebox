@@ -1,4 +1,4 @@
-type Item = {
+export type Item = {
   Poster: string;
   Title: string;
   Type: string;
@@ -6,7 +6,7 @@ type Item = {
   imdbID: string;
 };
 
-type Ratings = {
+export type Ratings = {
   Source: string;
   Value: string;
 };

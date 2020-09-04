@@ -1,4 +1,9 @@
-import { ISearchResponse, IMovieResponse, IErrorResponse } from "../api/models";
+import {
+  ISearchResponse,
+  IMovieResponse,
+  IErrorResponse,
+  Item,
+} from "../api/models";
 
 export interface IActionSearch {
   type: string;
@@ -13,7 +18,8 @@ export interface IActionDetails {
 }
 
 export interface IState {
-  queries: [];
+  error: string | null;
+  results: Item[];
   movies: [];
 }
 

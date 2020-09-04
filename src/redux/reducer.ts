@@ -2,27 +2,27 @@ import { SEARCH_MOVIES, GET_MOVIE_DETAILS } from "./constants";
 import { IState, IActions } from "./types";
 
 const initialState: IState = {
+  error: null,
+  results: [],
   movies: [],
-  queries: [],
 };
 
 const reducer = (state: IState = initialState, action: IActions) => {
   const { type, payload, error } = action;
 
-  console.log(action);
-
   switch (type) {
     case SEARCH_MOVIES:
       if (error) {
-        // return { ...state, error };
+        return { ...state, error: error.Error };
+      } else if (payload) {
+        return { ...state, results: [...payload.Search] };
       }
-      // return { ...state, payload };
-      return { ...state };
     case GET_MOVIE_DETAILS:
-      if (error) {
-        // return { ...state, error };
-      }
-      // return { ...state, payload };
+      // if (error) {
+      //   return { ...state, error: error.Error };
+      // } else if (payload) {
+      //   return { ...state, results: [...payload.Search] };
+      // }
       return { ...state };
     default:
       return state;
