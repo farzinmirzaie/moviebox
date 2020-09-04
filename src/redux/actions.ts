@@ -15,7 +15,8 @@ const search = (query: string, page: number) => {
       const json = await response.json();
       dispatch({
         type: SEARCH_MOVIES,
-        payload: json,
+        payload: json.Error ? undefined : json,
+        error: json.Error ? json : undefined,
       });
     } catch (error) {
       dispatch({
@@ -33,7 +34,8 @@ const details = (id: string) => {
       const json = await response.json();
       dispatch({
         type: GET_MOVIE_DETAILS,
-        payload: json,
+        payload: json.Error ? undefined : json,
+        error: json.Error ? json : undefined,
       });
     } catch (error) {
       dispatch({
