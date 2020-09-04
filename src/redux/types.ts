@@ -26,7 +26,7 @@ export interface IActionDetails {
 export interface IState {
   error: string | null;
   results: Item[];
-  movies: [];
+  movies: IMovieResponse[];
 }
 
 export type IActions = IActionClear | IActionSearch | IActionDetails;

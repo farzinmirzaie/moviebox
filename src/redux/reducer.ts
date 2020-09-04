@@ -10,8 +10,6 @@ const initialState: IState = {
 const reducer = (state: IState = initialState, action: IActions) => {
   const { type, payload, error } = action;
 
-  // console.log(action);
-
   switch (type) {
     case CLEAR_RESULTS:
       return {
@@ -34,12 +32,11 @@ const reducer = (state: IState = initialState, action: IActions) => {
         };
       }
     case GET_MOVIE_DETAILS:
-      // if (error) {
-      //   return { ...state, error: error.Error };
-      // } else if (payload) {
-      //   return { ...state, results: [...payload.Search] };
-      // }
-      return { ...state };
+      if (payload) {
+        const newMovies = state.movies;
+        newMovies.push(payload);
+        return { ...state, movies: newMovies };
+      }
     default:
       return state;
   }
