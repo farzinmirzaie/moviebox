@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  View,
-  TouchableNativeFeedback,
-  Text,
-  Image,
-  StyleSheet,
-} from "react-native";
+import { View, TouchableNativeFeedback, Text, StyleSheet } from "react-native";
+import { Image } from "react-native-expo-image-cache";
 import { Item } from "../api/models";
 
 interface Props {
@@ -18,11 +13,7 @@ const MovieCard: React.FC<Props> = ({ data, onPress }): JSX.Element => {
     <View style={{ flex: 1 }}>
       <TouchableNativeFeedback onPress={onPress}>
         <View style={styles.container}>
-          <Image
-            source={{ uri: data.Poster }}
-            style={styles.image}
-            resizeMode="stretch"
-          />
+          <Image uri={data.Poster} style={styles.image} />
           <Text style={styles.title}>{data.Title}</Text>
           <Text style={styles.info}>
             {data.Year} / {data.Type}

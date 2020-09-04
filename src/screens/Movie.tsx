@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import {
   View,
-  Text,
-  Image,
   ScrollView,
   ActivityIndicator,
   Dimensions,
   StyleSheet,
 } from "react-native";
+import { Image } from "react-native-expo-image-cache";
 import { useSelector, useDispatch, actions } from "../redux";
 import { INavigationProps } from "./types";
 import { IState } from "../redux/types";
@@ -42,7 +41,7 @@ const Movie: React.FC<INavigationProps<"Movie">> = ({
         style={styles.scrollView}
         contentContainerStyle={styles.scrollView}
       >
-        <Image source={{ uri: movieData?.Poster }} style={styles.poster} />
+        <Image uri={movieData.Poster} style={styles.poster} />
         <DetailCard title={"Title"} value={movieData.Title} />
         <DetailCard title={"Year"} value={movieData.Year} />
         <DetailCard title={"Plot"} value={movieData.Plot} />
