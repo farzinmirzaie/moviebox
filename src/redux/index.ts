@@ -5,4 +5,5 @@ import actions from "./actions";
 
 const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
+export * from "react-redux";
 export { store, actions };

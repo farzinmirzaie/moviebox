@@ -1,16 +1,32 @@
+import {
+  ISearchResponse,
+  IMovieResponse,
+  IErrorResponse,
+  Item,
+} from "../api/models";
+
+export interface IActionClear {
+  type: string;
+  payload?: undefined;
+  error?: undefined;
+}
+
 export interface IActionSearch {
   type: string;
-  payload: string;
+  payload?: ISearchResponse;
+  error?: IErrorResponse;
 }
 
 export interface IActionDetails {
   type: string;
-  payload: number;
+  payload?: IMovieResponse;
+  error?: IErrorResponse;
 }
-
-export type IActions = IActionSearch | IActionDetails;
 
 export interface IState {
-  queries: [];
+  error: string | null;
+  results: Item[];
   movies: [];
 }
+
+export type IActions = IActionClear | IActionSearch | IActionDetails;
