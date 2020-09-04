@@ -5,6 +5,12 @@ import {
   Item,
 } from "../api/models";
 
+export interface IActionClear {
+  type: string;
+  payload?: undefined;
+  error?: undefined;
+}
+
 export interface IActionSearch {
   type: string;
   payload?: ISearchResponse;
@@ -23,4 +29,4 @@ export interface IState {
   movies: [];
 }
 
-export type IActions = IActionSearch | IActionDetails;
+export type IActions = IActionClear | IActionSearch | IActionDetails;

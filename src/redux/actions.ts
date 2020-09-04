@@ -1,17 +1,22 @@
-import { SEARCH_MOVIES, GET_MOVIE_DETAILS } from "./constants";
-import { IActionSearch, IActionDetails } from "./types";
+import { CLEAR_RESULTS, SEARCH_MOVIES, GET_MOVIE_DETAILS } from "./constants";
+import { IActionClear, IActionSearch, IActionDetails } from "./types";
 import api from "../api";
 
-const search = (query: string) => {
+const clear = (): IActionClear => {
+  return {
+    type: CLEAR_RESULTS,
+  };
+};
+
+const search = (query: string, page: number) => {
   return async (dispatch: (art0: IActionSearch) => IActionSearch) => {
     try {
-      const response = await api.search(query);
+      const response = await api.search(query, page);
       const json = await response.json();
       dispatch({
         type: SEARCH_MOVIES,
         payload: json,
       });
-      return json.movies;
     } catch (error) {
       dispatch({
         type: SEARCH_MOVIES,
@@ -30,7 +35,6 @@ const details = (id: string) => {
         type: GET_MOVIE_DETAILS,
         payload: json,
       });
-      return json.movies;
     } catch (error) {
       dispatch({
         type: GET_MOVIE_DETAILS,
@@ -41,6 +45,7 @@ const details = (id: string) => {
 };
 
 export default {
+  clear,
   search,
   details,
 };
